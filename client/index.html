@@ -1,13 +1,20 @@
 <!doctype HTML>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>{{name}}</title>
+  <title>{{name}}</title>
 
-<link rel="stylesheet" href="css/{{name}}.{{version}}{{#production}}.min{{/production}}.css">
+  <link rel="stylesheet" href="css/{{name}}.{{version}}{{#production}}.min{{/production}}.css">
+</head>
 
 <!-- Your HTML goes here -->
-
-<script src="js/{{name}}.{{version}}{{#production}}.min{{/production}}.js"></script>
-
+<body>
+  <div id="root"></div>
+  {{#production}}
+    <script src="https://unpkg.com/react@15.3.2/dist/react-with-addons.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.min.js"></script>
+  {{/production}}
+  <script src="js/{{name}}.{{version}}{{#production}}.min{{/production}}.js"></script>
+</body>

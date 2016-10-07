@@ -9,8 +9,14 @@ var isProduction = process.env.NODE_ENV === 'production';
 var filename;
 var plugins;
 var outputPath;
+var externals;
+var devtool = '';
 
 if (isProduction) {
+    externals = {
+        "react": "React",
+        "react-dom": "ReactDOM"
+    };
     outputPath = 'build/production/client/js';
     filename = `${packageData.name}.${packageData.version}.min.js`;
     plugins = [
@@ -32,6 +38,7 @@ else {
             }
         })
     ];
+    devtool = 'source-map';
 }
 
 
@@ -51,5 +58,7 @@ module.exports = {
         },
       ]
     },
-    plugins: plugins
+    plugins: plugins,
+    externals: externals,
+    devtool: devtool
 }

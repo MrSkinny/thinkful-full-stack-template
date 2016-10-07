@@ -11,19 +11,19 @@ const app = express();
 app.use(express.static(process.env.CLIENT_PATH));
 
 function runServer() {
-    return new Promise((resolve, reject) => {
-        app.listen(PORT, HOST, (err) => {
-            if (err) {
-                console.error(err);
-                reject(err);
-            }
+  return new Promise((resolve, reject) => {
+    app.listen(PORT, HOST, (err) => {
+      if (err) {
+        console.error(err);
+        reject(err);
+      }
 
-            const host = HOST || 'localhost';
-            console.log(`Listening on ${host}:${PORT}`);
-        });
+      const host = HOST || 'localhost';
+      console.log(`Listening on ${host}:${PORT}`);
     });
+  });
 }
 
 if (require.main === module) {
-    runServer();
+  runServer();
 }
